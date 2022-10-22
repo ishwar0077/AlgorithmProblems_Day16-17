@@ -2,41 +2,26 @@
 
 public class Program
 {
-
-    static void sort(String[] s, int n)
-    {
-        for (int i = 1; i < n; i++)
+        static void Main(string[] args)
         {
-            String temp = s[i];
-
-            
-            int j = i - 1;
-            while (j >= 0 && temp.Length < s[j].Length)
+            int[] arr = { 90, 40, 75, 44, 33 };
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
             {
-                s[j + 1] = s[j];
-                j--;
+                for (int i = 0; i <= arr.Length - 2; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
+                    }
+                }
             }
-            s[j + 1] = temp;
+            Console.WriteLine("Bubble Sorted:");
+            foreach (int p in arr)
+                Console.Write(p + " ");
+            Console.Read();
         }
-    }
-
-   
-    static void printArraystring(String[] str, int n)
-    {
-        for (int i = 0; i < n; i++)
-            Console.Write(str[i] + " ");
-    }
-
     
-    public static void Main()
-    {
-        String[] arr = { "I", "Ishwar", "Rathod", "am" };
-        int n = arr.Length;
-
-        
-        sort(arr, n);
-        
-        printArraystring(arr, n);
-
-    }
 }
