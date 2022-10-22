@@ -1,33 +1,34 @@
 ﻿namespace AlgorithmPrograms
 {
-   public class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+
+            int a, b, i, j, flag;
+            Console.WriteLine("Enter lower bound of " + "the interval: ");
+            a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter upper bound " + "of the interval: ");
+            b = int.Parse(Console.ReadLine());
+            Console.WriteLine("Prime numbers between " + "{0} and {1} are: ", a, b);
+            for (i = a; i <= b; i++)
             {
-                string str1 = "heart";
-                string str2 = "earth";
 
-                char[] ch1 = str1.ToLower().ToCharArray();
-                char[] ch2 = str2.ToLower().ToCharArray();
+                if (i == 1 || i == 0)
+                    continue;
+                flag = 1;
 
-                Array.Sort(ch1);
-                Array.Sort(ch2);
-
-                string s1 = new string(ch1);
-                string s2 = new string(ch2);
-
-                if (s1 == s2)
+                for (j = 2; j <= i / 2; ++j)
                 {
-                    Console.WriteLine("Anagram");
-
+                    if (i % j == 0)
+                    {
+                        flag = 0;
+                        break;
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Not Anagram");
-                }
+                if (flag == 1)
+                    Console.WriteLine(i);
             }
         }
-
     }
-} 
+}
