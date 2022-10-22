@@ -1,44 +1,42 @@
 ﻿using System;
-using System.Globalization;
 
-namespace AlgorithmPrograms
+public class Program
 {
-    public class Program
+
+    static void sort(String[] s, int n)
     {
-        public static String swapString(String a, int i, int j)
+        for (int i = 1; i < n; i++)
         {
-            char[] b = a.ToCharArray();
-            char ch;
-            ch = b[i];
-            b[i] = b[j];
-            b[j] = ch;
-            return string.Join("", b);
-        }
+            String temp = s[i];
 
-        public static void Main(String[] args)  // main method
-        {
-            String str = "ABC";
-            int len = str.Length;
-            Console.WriteLine("All the permutations of the string are: ");
-            generatePermutation(str, 0, len);
-
-        }
-
-        public static void generatePermutation(String str, int start, int end)
-        {
-           
-            if (start == end - 1)
-                Console.WriteLine(str);
-            else
+            
+            int j = i - 1;
+            while (j >= 0 && temp.Length < s[j].Length)
             {
-                for (int i = start; i < end; i++)
-                {
-                    str = swapString(str, start, i);
-                    generatePermutation(str, start + 1, end);
-                    str = swapString(str, start, i);
-                }
+                s[j + 1] = s[j];
+                j--;
             }
+            s[j + 1] = temp;
         }
+    }
+
+   
+    static void printArraystring(String[] str, int n)
+    {
+        for (int i = 0; i < n; i++)
+            Console.Write(str[i] + " ");
+    }
+
+    
+    public static void Main()
+    {
+        String[] arr = { "I", "Ishwar", "Rathod", "am" };
+        int n = arr.Length;
+
+        
+        sort(arr, n);
+        
+        printArraystring(arr, n);
 
     }
 }
